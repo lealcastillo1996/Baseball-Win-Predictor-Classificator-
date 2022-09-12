@@ -4,50 +4,45 @@ The **objective** of this project is to create an accurate as possible machine l
 ![alt text](https://imageio.forbes.com/specials-images/imageserve/60502c89850eaa01f8e5d84a/Boston-Red-Sox-v-Tampa-Bay-Rays/960x0.jpg?format=jpg&width=960)
 
 ## Overview
-### - Exploratory Data Analysis of housing data (Insights):
+### - Initial EDA:
+A dataset gathered from a famous sports website will be used to gain initial insights for this project.
 
 - Missing values handling
-- All numerical variables
-- Distribution of numerical variables
+- Temporal relationship
+- Numerical variables distribution
 - Categorical variables
-- Cardinatily of categorical variables
-- Outliers
-- Relationships between dependent and independent features
+- Dependent variable relantionships
+- Correlations
+- Conclusions from data
+
+### - Data transformation:
+
+In this step, new features summarizing previous games performance will be generated
 
 
-### - Feature engineering framework:
+### - Advanced EDA:
+In this step, a new analysis using the generated variables in the step will be performed
 
-- Splitting data into train and test set with stratified sampling tecnique to preserve distributions found in the housing data
-- Creation of an advanced custom transformation pipeline with helpfull tools such as: median imputer, log normalization, custom column modifiers, rare category handler, NaN dropper, categoric variable encoder and variables scaler. (to clean and transform in a fast way future raw sets)
+The features created now correlate better than original ones, however the correlation keeps weak. A model of classification will be constructed with this features as intances, we will try to choose a not flexible model  (linear model) because correlation is not strong enough, therefore variance is big and we dont want to fall in an overfit problem
 
-*Note: I could have used ScikitLearn tools such as imputer or Ordinal Encoder, however to add more value to the project and have more control I defined my own cleaning functions*
 
-### - Feature selection framework:
+### - Feature Engineering:
 
--Use filter algorithms simple methods such as Chi square and Correlation matrix methods to have an initial visualization.
+In this step, the created dataset will be cleaned. Secondly a a train and test set will be generated.  Finally the sets numerical variables will be normalized using a standard deviation scaler.
 
-- Different regression embeded methods will be used to determine feature importance and select the best features to feed our models:
-- Linear Regression
-- Decision Tree Regression
-- Random Forest Regression
-- XgBoost Regression
-- Permutation Regression
+Two scaled sets were generated and are ready to apply machine learning models on them (Train set: 8479rows, Test set: 2120 rows) 
 
-*I propose 2 ways of selecting best features, one is simply selecting the top occurrences total sum of the counts, the second one is selecting the the features that appeared as a top in at least 2 different models*
+### - Naive-Bayes Classificator
 
-### - Model selection, training and tunning:
-Diferent algorithms to find the one with the best metrics and results for this problem
+Naive- Bayes classicator algorithm was choosed because is among one of the best unflexible classificators when large variance is observed in data.
 
-Models proposed:
-- Linear Regressor
-- Decision Tree Regressor
-- Random Forest Regressor
-- Support vector machine regressor
-- KG-Boost Regressor
-- K-n Neighbor regressor
-- Lasso Regressor
+
 
 ### - Results summary
 
-A regressor tool for estimating housing sale price was developed from scrath with excelent results, reaching a 88% accuracy in test set. All steps and assumptions were important to reach this result
+Even though the predictors didnt correlate so well with the output, a classificator with a reasonable accuracy was possible to create, especially for the True predictions of a Local Team to win. (63%)
 
+
+Application of  this classificator for sport betting should be analyzed since the game odds  of sportbooks are  so tricky and maybe a revenue with this accuracy could no be  possible without a correct betting strategy.
+
+![alt text](https://media.discordapp.net/attachments/929043644512624691/1018974875693625414/Captura_de_Pantalla_2022-09-12_a_las_21.59.53.png)
